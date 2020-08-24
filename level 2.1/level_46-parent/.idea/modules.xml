@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/level_46-backend-web/level_46-backend-web.iml" filepath="$PROJECT_DIR$/level_46-backend-web/level_46-backend-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/level_46-common/level_46-common.iml" filepath="$PROJECT_DIR$/level_46-common/level_46-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/level_46-dao/level_46-dao.iml" filepath="$PROJECT_DIR$/level_46-dao/level_46-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/level_46-front-web/level_46-front-web.iml" filepath="$PROJECT_DIR$/level_46-front-web/level_46-front-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/level_46-parent.iml" filepath="$PROJECT_DIR$/level_46-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/level_46-pojo/level_46-pojo.iml" filepath="$PROJECT_DIR$/level_46-pojo/level_46-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/level_46-service/level_46-service.iml" filepath="$PROJECT_DIR$/level_46-service/level_46-service.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.level_46.dao.SysuserDAO">
+
+    <sql id="sysuserColumn">
+        id,name,password,is_valid,gmt_create,gmt_modified
+    </sql>
+
+    <resultMap id="sysuserMap" type="sysuser">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+    </resultMap>
+
+
+    <!--
+        public List<Sysuser> selectAll();
+    -->
+    <select id="selectAll" resultMap="sysuserMap">
+        SELECT
+          <include refid="sysuserColumn"/>
+        FROM
+           t_sysuser
+    </select>
+
+    <!--
+    public Sysuser selectById(Integer id);
+    -->
+    <select id="selectById" resultMap="sysuserMap">
+        SELECT
+          <include refid="sysuserColumn"/>
+        FROM
+          t_sysuser
+        where
+          id=#{id}
+    </select>
+
+    <!--
+    public void insert(Sysuser sysuser);
+    -->
+    <insert id="insert" parameterType="sysuser">
+        INSERT INTO
+          t_sysuser
+        (name,password,is_valid,gmt_create,gmt_modified)
+        VALUES
+        (#{name},#{password},#{isValid},#{gmtCreate},#{gmtModified})
+    </insert>
+
+    <!--
+    public void updateName(@Param("id")Integer id, @Param("name") String name);
+    -->
+    <update id="update">
+        UPDATE
+          t_sysuser
+        SET
+          name=#{name},
+        WHERE
+          id=#{id}
+    </update>
+
+    <!--
+    public void updateStatus(@Param("id")int id,@Param("isValid") int isValid);
+    -->
+    <update id="updateStatus">
+        UPDATE
+          t_sysuser
+        SET
+          is_valid=#{isValid}
+        where id=#{id}
+
+    </update>
+
+    <!--
+    public Sysuser selectByName(String name);
+    -->
+    <select id="selectByName" resultType="Sysuser">
+        SELECT
+          id,name
+        FROM
+          t_sysuser
+        WHERE
+          name=#{name}
+    </select>
+
+    <!--
+        public Sysuser selectByLoginNameAndPass(@Param("name")String name, @Param("password")String password, @Param("isValid")Integer sysuserValid);
+    -->
+    <select id="selectByNameAndPass" resultType="sysuser">
+
+        SELECT
+          id,name
+        FROM
+          t_sysuser
+        WHERE
+          name=#{name} and password=#{password} and is_valid=#{isValid}
+
+    </select>
+
+
+
+</mapper>

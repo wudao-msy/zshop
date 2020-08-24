@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.level_46.dao.NewsDAO">
+
+    <resultMap id="newsMap" type="news">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+    </resultMap>
+
+    <sql id="newsColumn">
+        id,title,content,gmt_create,gmt_modified
+    </sql>
+
+    <!--
+        public List<News> selectAll();
+    -->
+    <select id="selectAll"  resultMap="newsMap">
+      SELECT <include refid="newsColumn"/>
+      FROM t_news
+    </select>
+
+
+    <!--
+        public void insert(News news);
+    -->
+    <insert id="insert" parameterType="news">
+        INSERT INTO
+        t_news
+        (title,content,gmt_create,gmt_modified)
+        VALUES
+        (#{title},#{content},#{gmtCreate},#{gmtModified})
+
+    </insert>
+
+    <!--
+        public News selectByName(String name);
+    -->
+    <select id="selectByTitle" resultMap="newsMap">
+        SELECT <include refid="newsColumn"/>
+        From t_news
+        WHERE title=#{title}
+
+    </select>
+
+    <!--
+       public void update(News news);
+    -->
+    <update id="update" parameterType="news">
+        UPDATE t_news
+        SET title=#{title},content=#{content},gmt_modified=#{gmtModified}
+        WHERE  id=#{id}
+
+    </update>
+
+    <!--
+        public News selectById(Integer id);
+    -->
+    <select id="selectById" resultMap="newsMap">
+      SELECT <include refid="newsColumn"/>
+      From t_news
+      WHERE  id=#{id}
+    </select>
+
+
+    <delete id="deteleById" >
+        delete from t_news
+        where id=#{id}
+    </delete>
+
+
+
+</mapper>

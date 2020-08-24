@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.level_46.dao.ExamDAO">
+
+    <resultMap id="examMap" type="exam">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="play" column="play"/>
+        <result property="kind" column="kind"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+    </resultMap>
+
+    <sql id="examColumn">
+        id,name,play,kind,is_valid,gmt_create,gmt_modified
+    </sql>
+
+    <!--
+        public List<Exam> selectAll();
+    -->
+    <select id="selectAll"  resultMap="examMap">
+      SELECT <include refid="examColumn"/>
+      FROM t_exam
+    </select>
+
+
+    <!--
+        public void insert(Exam exam);
+    -->
+    <insert id="insert" parameterType="exam">
+        INSERT INTO
+        t_exam
+        (name,play,kind,is_valid,gmt_create,gmt_modified)
+        VALUES
+        (#{name},#{play},#{kind},#{isValid},#{gmtCreate},#{gmtModified})
+
+    </insert>
+
+    <!--
+        public Exam selectByName(String name);
+    -->
+    <select id="selectByName" resultMap="examMap">
+        SELECT <include refid="examColumn"/>
+        From t_exam
+        WHERE name=#{name}
+
+    </select>
+
+    <!--
+       public void update(Exam exam);
+    -->
+    <update id="update" parameterType="exam">
+        UPDATE t_exam
+        SET name=#{name},play=#{play},kind=#{kind},gmt_modified=#{gmtModified}
+        WHERE  id=#{id}
+
+    </update>
+
+    <!--
+        public Exam selectById(Integer id);
+    -->
+    <select id="selectById" resultMap="examMap">
+      SELECT <include refid="examColumn"/>
+      From t_exam
+      WHERE  id=#{id}
+    </select>
+
+    <!--
+        public void updateStatus(Integer id,Integer isVaild);
+    -->
+    <update id="updateStatus">
+        UPDATE t_exam
+        SET is_valid=#{isValid}
+        WHERE id=#{id}
+    </update>
+
+
+    <select id="selectByParams" resultMap="examMap" parameterType="com.zte.level_46.params.ExamParam">
+        select <include refid="examColumn"/>
+        from t_exam
+        <where>
+            <if test="examId!=null and examId!=-1">
+                and id=#{examId}
+            </if>
+            <if test="kind!=null and kind!=-1">
+                and kind=#{kind}
+            </if>
+            <if test="isValid!=null and isValid!=-1">
+                and is_valid=#{isValid}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="selectEnable"  resultMap="examMap">
+        SELECT <include refid="examColumn"/>
+        FROM t_exam
+        where is_valid=#{isValid}
+    </select>
+</mapper>

@@ -1,0 +1,485 @@
+
+*{
+margin:0px;
+padding:0px;
+}
+body{
+font-size:14px;
+font-family:"����",Arial, Helvetica, sans-serif;
+}
+
+.center_con_1{
+position:relative;
+height:249px;
+background-color:#fff;
+width:1000px;
+}
+
+.center_con1{
+position:relative;
+height:660px;
+*height:660px;
+background-color:#fff;
+width:1000px;
+}
+
+.e_sign{
+margin-top:30px;
+width:20%;
+float:left;
+margin-left:280px;
+}
+
+.e_sign a{
+border-radius:5px;
+text-decoration:none;
+background-color:#D0E6EE;
+}
+
+
+.e_sign a:hover{
+background-color:#d1edff;
+}
+
+
+.p_sign a:hover{
+background-color:#d1edff;
+}
+
+.p_sign{
+margin-top:30px;
+width:20%;
+float:left;
+}
+
+.p_sign a{
+border-radius:5px;
+text-decoration:none;
+background-color:#D0E6EE;
+}
+
+.con_pic{
+float:left;
+margin-left:10px;
+width:500px;
+height:246px;
+background:url(../images/left_pic.gif) no-repeat;
+}
+
+.foot_logo{
+	display:inline-block;
+    margin:0 2em;
+}
+
+.foot_logo p{
+	font-size:13px;
+	font-weight:600;
+	color:#666;
+	margin-top:.5em;
+}
+
+.foot_logo_box{
+	width:1000px;min-height:130px;
+}
+
+
+.right_login{
+position:absolute;
+width:324px;
+height:370px;
+background:url(../images/login_bg.png) repeat-y;
+right:100px;
+*right:110px;
+top:-28px;
+*top:-28px;
+
+}
+
+.top_bg{
+width:324px;
+height:28px;
+display: block;
+background:url(../images/top_bg.gif) no-repeat;
+}
+
+.login_con{
+width:100%;
+height:340px;
+}
+
+.down_bg{
+width:324px;
+height:24px;
+display: block;
+background:url(../images/down_bg.png) no-repeat;
+}
+
+.findpassword a{
+text-decoration:none;
+color:#27498f;
+font-size:12px;
+}
+
+.findpassword a:hover{
+color:#ff7800;
+font-size:12px;
+}
+
+.line_bg{
+margin-top:10px;
+margin-left:15px;
+width:273px;
+height:10px;
+background:url(../images/line.gif) no-repeat;
+}
+
+.line_bg_sign{
+margin-top:35px;
+width:273px;
+height:10px;
+background:url(../images/line.png) no-repeat;
+}
+
+
+.other_select{
+line-height:2em;
+margin-top:10px;
+font-size:12px;
+color:#666666;
+width:90%;
+padding-left:35px;
+}
+
+.other_select1{
+line-height:2em;
+margin-top:10px;
+font-size:12px;
+color:#666666;
+width:90%;
+padding-left:35px;
+}
+
+
+#foot{
+font-size:12px;
+color:#888;
+}
+
+.top_con{
+height:103px;
+width:100%;
+background:url(../images/login_top_bg.gif) repeat-x;
+}
+
+.foot_con{
+height:38px;
+margin-bottom:25px;
+width:100%;
+background:url(../images/login_foot_bg.gif) repeat-x;
+}
+
+.foot_con1{
+height:122px;
+margin-bottom:35px;
+width:100%;
+background:url(../images/sub_foot.gif) repeat-x;
+}
+
+
+.foot_con1_out{
+width:1000px;
+height:122px;
+}
+
+.foot_con1_logo{
+margin-left:250px;
+width:277px;
+height:83px;
+background:url(../images/guanggao.gif) no-repeat;
+}
+
+.center_con_left{
+*height:610px;
+height:610px;
+width:530px;
+box-shadow: #ddd 10px -5px 10px;
+border-right:1px #bbb solid\9;
+margin-left:20px;
+float:left;
+
+}
+
+.center_show_left{
+*height:300px;
+height:300px;
+width:250px;
+box-shadow: #ddd 10px -5px 10px;
+border-right:1px #bbb solid\9;
+margin-left:80px;
+float:left;
+
+}
+
+
+.center_con_right{
+border:1px #ccc solid;
+height:417px;
+width:270px;
+border-radius:6px;
+float:right;
+margin-right:120px;
+margin-top:85px;
+background:url(../images/login_left_bg.gif) repeat-x;
+}
+
+
+.center_show_right{
+
+height:417px;
+width:570px;
+float:right;
+margin-right:100px;
+margin-top:25px;
+
+}
+
+.input_style{
+padding-left:10px;
+margin-left:10px;
+width:300px;
+   padding:5px;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+
+.input_style4{
+padding-left:0px;
+margin-left:0px;
+width:120px;
+height:25px;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+
+.input_style5{
+padding-left:0px;
+margin-left:0px;
+width:320px;
+height:25px;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+.input_style_readonly{
+padding-left:10px;
+margin-left:10px;
+width:300px;
+ padding:5px;
+color:#999999;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+.input_style2{
+padding-left:15px;
+margin-left:10px;
+width:120px;
+height:25px;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+
+.input_style3{
+ 
+margin-left:5px;
+width:200px;
+  padding:5px;
+border:1px #ccc solid;
+border-radius:5px;
+
+ 
+}
+
+.sign_logo{
+float:left;
+margin:30px 0px 0px 50px;
+width:156px;
+height:51px;
+background:url(../images/sign.png) no-repeat;
+}
+
+.sign_logo_show{
+float:left;
+margin:25px 0px 0px 100px;
+width:200px;
+padding-left:-20px;
+height:500px;
+background:url(../images/sign_show.png) no-repeat;
+}
+
+.line2{
+height:20px;
+width:150px;
+background:url(../images/line2.gif) no-repeat;
+}
+
+.input_sign{
+margin-top:20px;
+margin-left:25px;
+float:left;
+width:80%;
+min-height:100px;
+}
+
+.input_sign1{
+margin-top:10px;
+margin-left:10px;
+float:left;
+width:85%;
+}
+
+.input_sub{
+
+width:100%;
+margin-bottom:10px;
+}
+
+.input_sub1{
+padding-left:2em;
+width:100%;
+margin-bottom:10px;
+}
+
+
+.input_sub2{
+padding-left:1em;
+width:100%;
+margin-bottom:10px;
+}
+
+
+
+
+.center_con{
+width:1000px;
+height:417px;
+}
+
+.top_con_out{
+width:1000px;
+height:103px;
+}
+
+.top_con_logo{
+float:left;
+margin-left:30px;
+width:231px;
+height:103px;
+}
+
+.top_con_link{
+margin-top:50px;
+margin-right:30px;
+font-size:12px;
+color:#666666;
+float:right;
+width:320px;
+height:25px;
+}
+
+.top_con_link2{
+margin-top:50px;
+margin-right:30px;
+font-size:12px;
+color:#666666;
+float:right;
+width:280px;
+height:25px;
+}
+
+.top_con_link li{
+margin-right:18px;
+list-style:none;
+display:inline;
+}
+
+
+.top_con_link2 li{
+margin-right:18px;
+list-style:none;
+display:inline;
+}
+
+ .tb a{
+border-right:1px #aaaaaa solid;
+}
+
+.top_con_link ul a{
+text-decoration:none;
+width:80px;
+color:#384087;
+display:block;
+float:left;
+}
+
+
+.top_con_link2 ul a{
+text-decoration:none;
+width:80px;
+color:#384087;
+display:block;
+float:left;
+}
+
+.top_con_link ul a:hover{
+font-weight:bolder;
+color:#28a6ff;
+}
+
+
+.top_con_link2 ul a:hover{
+font-weight:bolder;
+color:#28a6ff;
+}
+
+.tb_link {
+line-height:1.5em;
+}
+
+.tb_link a:link,.tb_link a:visited{
+text-decoration:none;
+width:80px;
+color:#384087;
+display:block;
+float:left;
+}
+
+.tb_link a:active,.tb_link a:hover{
+color:#28a6ff;
+}
+
+.input_style6{
+padding-left:2px;
+margin-left:0px;
+width:120px;
+height:20px;
+  padding-top:5px;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+ .input_style7{
+padding-left:2px;
+margin-left:0px;
+width:320px;
+height:20px;
+  padding-top:5px;
+border:1px #ccc solid;
+border-radius:5px;
+}
+
+
+

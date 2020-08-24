@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.level_46.dao.ImgDAO">
+
+    <resultMap id="imgMap" type="img">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="path" column="path"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModify" column="gmt_modify"/>
+    </resultMap>
+
+    <sql id="imgColumn">
+        id,name,path,gmt_create,gmt_modify
+    </sql>
+
+    <!--
+        public List<Img> selectAll();
+    -->
+    <select id="selectAll"  resultMap="imgMap">
+      SELECT <include refid="imgColumn"/>
+      FROM t_img
+    </select>
+
+
+    <!--
+        public void insert(Img img);
+    -->
+    <insert id="insert" parameterType="img">
+        INSERT INTO
+        t_img
+        (name,path,gmt_create,gmt_modify)
+        VALUES
+        (#{name},#{path},#{gmtCreate},#{gmtModify})
+
+    </insert>
+
+    <!--
+       public void update(Img img);
+    -->
+    <update id="update" parameterType="img">
+        UPDATE t_img
+        SET name=#{name},path=#{path},gmt_modify=#{gmtModify}
+        WHERE  id=#{id}
+
+    </update>
+
+    <!--
+        public Img selectById(Integer id);
+    -->
+    <select id="selectById" resultMap="imgMap">
+      SELECT <include refid="imgColumn"/>
+      From t_img
+      WHERE  id=#{id}
+    </select>
+
+
+    <delete id="deteleById">
+        delete from t_img
+        where id=#{id}
+    </delete>
+
+
+    <select id="selectByName" resultMap="imgMap">
+        SELECT <include refid="imgColumn"/>
+        From t_img
+        WHERE name=#{name}
+
+    </select>
+
+
+</mapper>

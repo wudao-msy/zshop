@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.level_46.dao.StudentDAO">
+
+    <resultMap id="studentMap" type="student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="sex" column="sex"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="cert" column="cert"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+
+
+        <association property="exam" column="eid" javaType="exam">
+            <id property="id" column="ex.id"/>
+            <result column="ex.name" property="name"/>
+            <result column="ex.play" property="play"/>
+            <result column="ex.kind" property="kind" />
+            <result column="ex.is_valid" property="isValid" />
+            <result column="ex.gmtCreate" property="gmt_create" />
+            <result column="ex.gmtModified" property="gmt_modified" />
+        </association>
+
+        <association property="score" column="scid" javaType="score">
+            <id column="sc.id" property="id" />
+            <result column="sc.all_scores" property="allScores" />
+            <result column="sc.ke" property="ke"/>
+            <result column="sc.hearing" property="hearing" />
+            <result column="sc.reading" property="reading" />
+            <result column="sc.writing" property="writing" />
+            <result column="sc.gmtCreate" property="gmt_create" />
+            <result column="sc.gmtModified" property="gmt_modified" />
+        </association>
+
+    </resultMap>
+
+    <sql id="studentColumn">
+        id,name,password,phone,email,is_valid,gmt_create,gmt_modified
+    </sql>
+
+    <!--
+        public List<Student> selectAll();
+    -->
+    <select id="selectAll_4"  resultMap="studentMap">
+      select
+        st.id,
+        st.name,
+        st.password,
+        st.phone,
+        st.email,
+        st.cert,
+        st.sex,
+        st.is_valid,
+        ex.name 'ex.name',
+        ex.play 'ex.play',
+        ex.kind 'ex.kind',
+        sc.all_scores 'sc.all_scores',
+        sc.ke 'sc.ke',
+        sc.hearing 'sc.hearing',
+        sc.reading 'sc.reading',
+        sc.writing 'sc.writing'
+        from t_student st
+        left join t_exam ex on st.eid=ex.id
+        left join t_score sc on st.scid=sc.id
+        where ex.kind="4"
+        order by sc.all_scores
+    </select>
+
+
+    <select id="selectAll_6"  resultMap="studentMap">
+      select
+        st.id,
+        st.name,
+        st.password,
+        st.phone,
+        st.email,
+        st.cert,
+        st.sex,
+        st.is_valid,
+        ex.name 'ex.name',
+        ex.play 'ex.play',
+        ex.kind 'ex.kind',
+        sc.all_scores 'sc.all_scores',
+        sc.ke 'sc.ke',
+        sc.hearing 'sc.hearing',
+        sc.reading 'sc.reading',
+        sc.writing 'sc.writing'
+        from t_student st
+        left join t_exam ex on st.eid=ex.id
+        left join t_score sc on st.scid=sc.id
+        where ex.kind="6"
+        order by sc.all_scores
+    </select>
+
+    <!--
+        public void insert(Student student);
+    -->
+    <insert id="insert" parameterType="student">
+        INSERT INTO
+        t_student
+        (name,sex,phone,email,cert,is_valid,gmt_create,gmt_modified,eid,scid)
+        VALUES
+        (#{name},#{sex},#{phone},#{email},#{cert},#{isValid},#{gmtCreate},#{gmtModified},#{exam.id},#{score.id})
+
+    </insert>
+
+    <!--
+        public Student selectByName(String name);
+    -->
+    <select id="selectByName" resultMap="studentMap">
+        SELECT id,name,password,sex,phone,email,cert,is_valid,gmt_create,gmt_modified
+        From t_student
+        WHERE name=#{name}
+
+    </select>
+
+    <!--
+       public void update(Student student);
+    -->
+    <update id="update" parameterType="student">
+        UPDATE t_student
+        SET name=#{name},sex=#{sex},phone=#{phone},email=#{email},cert=#{cert},gmt_modified=#{gmtModified}
+        WHERE  id=#{id}
+
+    </update>
+
+    <!--
+        public Student selectById(Integer id);
+    -->
+    <select id="selectById" resultMap="studentMap">
+      select
+        st.id,
+        st.name,
+        st.password,
+        st.phone,
+        st.email,
+        st.cert,
+        st.sex,
+        st.is_valid,
+        ex.name 'ex.name',
+        ex.play 'ex.play',
+        ex.kind 'ex.kind',
+        sc.all_scores 'sc.all_scores',
+        sc.ke 'sc.ke',
+        sc.hearing 'sc.hearing',
+        sc.reading 'sc.reading',
+        sc.writing 'sc.writing'
+        from t_student st
+        left join t_exam ex on st.eid=ex.id
+        left join t_score sc on st.scid=sc.id
+      where  st.id=#{id}
+    </select>
+
+    <!--
+        public void updateStatus(Integer id,Integer isVaild);
+    -->
+    <update id="updateStatus">
+        UPDATE t_student
+        SET is_valid=#{isValid}
+        WHERE id=#{id}
+    </update>
+
+    <!--
+        public List<Student> selectByParams(CustomerParam customerParam);
+
+    -->
+    <select id="selectByParams_4" resultMap="studentMap" parameterType="com.zte.level_46.params.StudentParam">
+      select
+        st.id,
+        st.name,
+        st.password,
+        st.phone,
+        st.email,
+        st.cert,
+        st.sex,
+        st.is_valid,
+        ex.name 'ex.name',
+        ex.play 'ex.play',
+        ex.kind 'ex.kind',
+        sc.all_scores 'sc.all_scores',
+        sc.ke 'sc.ke',
+        sc.hearing 'sc.hearing',
+        sc.reading 'sc.reading',
+        sc.writing 'sc.writing'
+      from t_student st
+        left join t_exam ex on st.eid=ex.id
+        left join t_score sc on st.scid=sc.id
+
+        <where>
+            <if test="1==1">
+                ex.kind='4'
+            </if>
+            <if test="name!=null and name!=''">
+                and st.name like concat(concat('%',#{name}),'%')
+            </if>
+            <if test="cert!=null and cert!=''">
+                and st.cert like concat(concat('%',#{cert}),'%')
+            </if>
+            <if test="ke!=null and ke!=''">
+                and sc.ke like concat(concat('%',#{ke}),'%')
+            </if>
+            <if test="sex!=null and sex!=-1">
+                and st.sex=#{sex}
+            </if>
+            <if test="play!=null and play!=''">
+                and ex.play=#{play}
+            </if>
+            <if test="minScore!=null and maxScore!=null">
+                and sc.all_scores between #{minScore} and #{maxScore}
+            </if>
+            <if test="minScore!=null">
+                and sc.all_scores &gt;= #{minScore}
+            </if>
+            <if test="maxScore!=null">
+                and sc.all_scores &lt;= #{maxScore}
+            </if>
+            <if test="isValid!=null and isValid!=-1">
+                and st.is_valid=#{isValid}
+            </if>
+
+        </where>
+    </select>
+
+
+    <select id="selectByParams_6" resultMap="studentMap" parameterType="com.zte.level_46.params.StudentParam">
+        select
+        st.id,
+        st.name,
+        st.password,
+        st.phone,
+        st.email,
+        st.cert,
+        st.sex,
+        st.is_valid,
+        ex.name 'ex.name',
+        ex.play 'ex.play',
+        ex.kind 'ex.kind',
+        sc.all_scores 'sc.all_scores',
+        sc.ke 'sc.ke',
+        sc.hearing 'sc.hearing',
+        sc.reading 'sc.reading',
+        sc.writing 'sc.writing'
+        from t_student st
+        left join t_exam ex on st.eid=ex.id
+        left join t_score sc on st.scid=sc.id
+
+        <where>
+            <if test="1==1">
+                ex.kind='6'
+            </if>
+            <if test="name!=null and name!=''">
+                and st.name like concat(concat('%',#{name}),'%')
+            </if>
+            <if test="cert!=null and cert!=''">
+                and st.cert like concat(concat('%',#{cert}),'%')
+            </if>
+            <if test="ke!=null and ke!=''">
+                and sc.ke like concat(concat('%',#{ke}),'%')
+            </if>
+            <if test="sex!=null and sex!=-1">
+                and st.sex=#{sex}
+            </if>
+            <if test="play!=null and play!=''">
+                and ex.play=#{play}
+            </if>
+            <if test="minScore!=null and maxScore!=null">
+                and sc.all_scores between #{minScore} and #{maxScore}
+            </if>
+            <if test="minScore!=null">
+                and sc.all_scores &gt;= #{minScore}
+            </if>
+            <if test="maxScore!=null">
+                and sc.all_scores &lt;= #{maxScore}
+            </if>
+            <if test="isValid!=null and isValid!=-1">
+                and st.is_valid=#{isValid}
+            </if>
+
+        </where>
+    </select>
+
+    <!--
+        public Student selectByLoginNameAndPass(@Param("loginName")String loginName, @Param("password")String password, @Param("isValid")Integer isValid);
+    -->
+    <select id="selectByLoginNameAndPass" resultMap="studentMap">
+    SELECT
+        <include refid="studentColumn"/>
+    FROM
+        t_student
+    WHERE
+        email=#{email} and password=#{password} and is_valid=#{isValid}
+    </select>
+
+    <insert id="insertStudent" parameterType="com.zte.level_46.vo.StudentVO">
+        INSERT INTO
+        t_student
+        (name,password,phone,email,cert,is_valid,gmt_create,gmt_modified)
+        VALUES
+        (#{name},#{password},#{phone},#{email},#{cert},#{isValid},#{gmtCreate},#{gmtModified})
+    </insert>
+
+    <update id="updateDetail" parameterType="com.zte.level_46.vo.StudentVO">
+        UPDATE t_student
+        SET name=#{name},phone=#{phone},email=#{email},cert=#{cert},gmt_modified=#{gmtModified}
+        WHERE  email=#{email}
+
+    </update>
+
+
+    <update id="updatePassword">
+        UPDATE t_student
+        SET password=#{password}
+        WHERE  email=#{email}
+    </update>
+
+    <select id="selectScore" resultMap="studentMap">
+      select
+        st.id,
+        st.name,
+        st.password,
+        st.phone,
+        st.email,
+        st.cert,
+        st.sex,
+        st.is_valid,
+        ex.name 'ex.name',
+        ex.play 'ex.play',
+        ex.kind 'ex.kind',
+        sc.all_scores 'sc.all_scores',
+        sc.ke 'sc.ke',
+        sc.hearing 'sc.hearing',
+        sc.reading 'sc.reading',
+        sc.writing 'sc.writing'
+        from t_student st
+        left join t_exam ex on st.eid=ex.id
+        left join t_score sc on st.scid=sc.id
+      where  st.name=#{name} and sc.ke=#{ke} and ex.id=#{eid}
+    </select>
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.level_46.dao.ScoreDAO">
+
+    <sql id="scoreColumn">
+        id,ke,all_scores,hearing,reading,writing,gmt_create,gmt_modified
+    </sql>
+
+    <insert id="insert" parameterType="score" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        t_score
+        (ke,all_scores,hearing,reading,writing,gmt_create,gmt_modified)
+        VALUES
+        (#{ke},#{allScores},#{hearing},#{reading},#{writing},#{gmtCreate},#{gmtModified})
+
+    </insert>
+
+
+
+</mapper>

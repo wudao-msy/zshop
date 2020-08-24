@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="level_46-backend-web" />
+        <module name="level_46-common" />
+        <module name="level_46-dao" />
+        <module name="level_46-front-web" />
+        <module name="level_46-pojo" />
+        <module name="level_46-service" />
+        <module name="zshop-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="level_46-backend-web" target="1.8" />
+      <module name="level_46-common" target="1.8" />
+      <module name="level_46-dao" target="1.8" />
+      <module name="level_46-front-web" target="1.8" />
+      <module name="level_46-parent" target="1.8" />
+      <module name="level_46-pojo" target="1.8" />
+      <module name="level_46-service" target="1.8" />
+      <module name="zshop-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
