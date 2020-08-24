@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.zshop.dao.CustomerDAO">
+
+    <resultMap id="CustomerMap" type="customer">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="loginName" column="login_name"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="registDate" column="regist_date"/>
+
+    </resultMap>
+
+    <sql id="customerColumn">
+        id,name,login_name,password,phone,address,is_valid,regist_date
+    </sql>
+
+    <!--
+        public List<Customer> selectAll();
+    -->
+    <select id="selectAll"  resultMap="CustomerMap">
+      SELECT id,name,login_name,password,phone,address,is_valid,regist_date
+      FROM t_customer
+    </select>
+
+
+    <!--
+        public void insert(Customer customer);
+    -->
+    <insert id="insert" parameterType="customer">
+        INSERT INTO
+        t_customer
+        (name,loginName,password,phone,address,isValid,registDate)
+        VALUES
+        (#{name},#{login_name},#{password},#{phone},#{address},#{is_valid},#{regist_date})
+
+    </insert>
+
+    <!--
+        public Customer selectByName(String name);
+    -->
+    <select id="selectByName" resultMap="CustomerMap">
+        SELECT id,name,login_name,password,phone,address,is_valid,regist_date
+        From t_customer
+        WHERE name=#{name}
+
+    </select>
+
+    <!--
+       public void update(Customer customer);
+    -->
+    <update id="update" parameterType="customer">
+        UPDATE t_customer
+        SET name=#{name},phone=#{phone},address=#{address}
+        WHERE  id=#{id}
+
+    </update>
+
+    <!--
+        public Customer selectById(Integer id);
+    -->
+    <select id="selectById" resultMap="CustomerMap">
+      SELECT id,name,login_name,password,phone,address,is_valid,regist_date
+      From t_customer
+      WHERE  id=#{id}
+    </select>
+
+    <!--
+        public void updateStatus(Integer id,Integer isVaild);
+    -->
+    <update id="updateStatus">
+        UPDATE t_customer
+        SET is_valid=#{isValid}
+        WHERE id=#{id}
+    </update>
+
+    <!--
+        public List<Customer> selectByParams(CustomerParam customerParam);
+
+    -->
+    <select id="selectByParams" resultMap="CustomerMap" parameterType="com.zte.zshop.params.CustomerParam">
+        select id,name,login_name,password,phone,address,is_valid,regist_date
+        from t_customer
+        <where>
+            <if test="name!=null and name!=''">
+                and name like concat(concat('%',#{name}),'%')
+            </if>
+            <if test="loginName!=null and loginName!=''">
+                and login_name like concat(concat('%',#{loginName}),'%')
+            </if>
+            <if test="phone!=null and phone!=''">
+                and phone=#{phone}
+            </if>
+            <if test="address!=null and address!=''">
+                and address=#{address}
+
+            </if>
+            <if test="isValid!=null and isValid!=-1">
+                and is_valid=#{isValid}
+            </if>
+        </where>
+    </select>
+
+
+    <!--
+        public Customer selectByLoginNameAndPass(@Param("loginName")String loginName, @Param("password")String password, @Param("isValid")Integer isValid);
+    -->
+    <select id="selectByLoginNameAndPass" resultMap="CustomerMap">
+    SELECT
+        <include refid="customerColumn"/>
+    FROM
+        t_customer
+    WHERE
+        login_name=#{loginName} and password=#{password} and is_valid=#{isValid}
+    </select>
+</mapper>

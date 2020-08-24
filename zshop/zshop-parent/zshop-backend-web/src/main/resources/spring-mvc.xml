@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+       <!--注解驱动-->
+       <mvc:annotation-driven>
+              <!--消息转换器，将值以applicaton/json;charset=utf-8形式写进response的body中-->
+              <mvc:message-converters>
+                     <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                            <property name="supportedMediaTypes" value="applicaton/json;charset=utf-8"/>
+                     </bean>
+
+              </mvc:message-converters>
+
+       </mvc:annotation-driven>
+
+       <!--扫描controller包，让spring识别到对应的注解-->
+       <context:component-scan base-package="com.zte.zshop.backend.controller"/>
+
+       <!--视图解析器-->
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+            <property name="prefix" value="/WEB-INF/backend/"/>
+            <property name="suffix" value=".jsp"/>
+
+       </bean>
+
+       <!--默认servlet句柄-->
+       <mvc:default-servlet-handler/>
+
+
+       <!--view-controller-->
+       <mvc:view-controller path="/showLogin" view-name="login"/>
+
+       <!--将对应路径进行映射-->
+       <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
+       <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+       <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>
+       <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/"/>
+       <mvc:resources mapping="/layer/**" location="/WEB-INF/layer/"/>
+
+
+       <!--文件上传
+       注意：
+       1：这个bean的id必须是multipartResolver,原因是在springmvc的核心类：DispatcherServlet中，已经将很多bean的id固定了，你必须保证bean的id
+          相同，这样springmvc才可以正常工作
+       2：需要2个jar包:commons-fileupload.jar,commons-io.jar
+       -->
+       <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+              <property name="maxUploadSize" value="10000000"/>
+              <property name="defaultEncoding" value="utf-8"/>
+
+       </bean>
+
+
+
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.zshop.dao.OrderDao">
+
+    <!--
+    public void insertOrder(Order order);
+    -->
+    <insert id="insertOrder" parameterType="order">
+      insert INTO
+        t_order(no,customer_id,price,create_date)
+      VALUES
+        (#{no},#{customer.id},#{price},#{createDate})
+
+    </insert>
+
+</mapper>

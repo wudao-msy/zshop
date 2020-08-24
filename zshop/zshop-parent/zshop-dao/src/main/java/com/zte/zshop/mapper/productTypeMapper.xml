@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.zshop.dao.ProductTypeDAO">
+
+       <sql id="productTypeColumn">
+           id,
+           name,
+           status
+
+       </sql>
+       <!--
+       public List<ProductType> selectAll();
+       -->
+       <select id="selectAll" resultType="ProductType">
+          SELECT
+            <include refid="productTypeColumn"/>
+
+          FROM
+              t_product_type
+
+       </select>
+
+       <!--
+            public ProductType selectByName(String name);
+
+
+       -->
+       <select id="selectByName" resultType="productType">
+           select
+              <include refid="productTypeColumn"/>
+           FROM
+              t_product_type
+           where  name=#{name}
+       </select>
+
+        <!--
+        public void insert(String name, Object productTypeEnable);
+        -->
+       <insert id="insert">
+           insert INTO
+              t_product_type
+              (name,status)
+           VALUES
+              (#{name},#{status})
+
+       </insert>
+
+       <!--
+           public ProductType selectById(Integer id);
+       -->
+       <select id="selectById" resultType="ProductType">
+           select
+              <include refid="productTypeColumn"/>
+           FROM
+           t_product_type
+           where
+              id=#{id}
+       </select>
+
+       <!--
+        public void updateName(@Param("id") Integer id,@Param("name") String name);
+       -->
+       <update id="updateName">
+           update
+              t_product_type
+           set
+              name=#{name}
+           where
+              id=#{id}
+       </update>
+
+       <!--
+       public void updateStatus(@Param("id") Integer id,@Param("status") Integer status);
+       -->
+        <update id="updateStatus">
+            update
+              t_product_type
+            set
+              status=#{status}
+            where
+              id=#{id}
+        </update>
+
+        <!--
+        public void deleteById(Integer id);
+        -->
+        <delete id="deleteById">
+            DELETE
+            from
+              t_product_type
+            where
+              id=#{id}
+
+        </delete>
+
+        <!--
+        public List<ProductType> selectByStatus(Integer status);
+        -->
+        <select id="selectByStatus" resultType="ProductType">
+            select
+              <include refid="productTypeColumn"/>
+            FROM
+              t_product_type
+            where
+              status=#{status}
+        </select>
+
+</mapper>
